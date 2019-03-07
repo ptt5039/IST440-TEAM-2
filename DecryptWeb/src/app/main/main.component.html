@@ -1,0 +1,21 @@
+<section>
+{{userData.username}} <br>
+<p class="error" *ngIf="errorType">This file is not an image file, please re-upload</p>
+<p class="error" *ngIf="errorFile">There is no file to upload, please choose a file</p>
+<input type=file id="image" accept="image/*" (change)="handleFileInput($event.target.files)">
+<button (click) = "uploadImage()">Upload</button>
+<button (click) = "logout()">Log out</button>
+
+<div>
+    <h3>Current Upload:</h3>
+    <img *ngIf = "currentUpload" [src]="currentUpload.file_upload" width="150px" height="150px">
+</div>
+
+<h3>Past Upload:</h3>
+<div class="past-upload"  >
+    <div *ngFor = "let pastUpload of pastUploads?.reverse()">
+        <img [src]="pastUpload.file_upload" width="100px" height="100px" (click)="viewImage(pastUpload)">
+        <span (click)="deleteImage(pastUpload)" class="delete">&times;</span>
+    </div>
+</div>
+</section>
