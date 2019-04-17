@@ -682,6 +682,7 @@ var MainComponent = /** @class */ (function () {
     };
     MainComponent.prototype.getAllImages = function () {
         var _this = this;
+        this.incrementName = 1;
         this.httpRequest.getAllImages().subscribe(function (data) {
             _this.pastUploads = data;
             data.forEach(function (a) {
@@ -820,9 +821,12 @@ var MainComponent = /** @class */ (function () {
     };
     MainComponent.prototype.updateText = function (data) {
         var _this = this;
+        this.loading = true;
         this.httpRequest.getMessageByImage(data.id).subscribe(function (response) {
             _this.httpRequest.updateMessage(response[0].id, data.message).subscribe(function (data) {
+                _this.edit = false;
                 _this.getAllImages();
+                _this.loading = false;
                 alert('The text of the image has been changed');
             });
         });

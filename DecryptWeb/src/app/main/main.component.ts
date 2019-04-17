@@ -75,6 +75,7 @@ export class MainComponent implements OnInit {
   }
 
   getAllImages() {
+    this.incrementName = 1;
     this.httpRequest.getAllImages().subscribe(
       data => {
         this.pastUploads = data;
@@ -247,12 +248,16 @@ export class MainComponent implements OnInit {
   }
 
   updateText(data) {
+    this.loading=true;
     this.httpRequest.getMessageByImage(data.id).subscribe(
       response =>{
           this.httpRequest.updateMessage(response[0].id, data.message).subscribe(
             data => {
+              this.edit = false;
               this.getAllImages();
+              this.loading=false;
               alert('The text of the image has been changed');
+
             }
           )
       }
