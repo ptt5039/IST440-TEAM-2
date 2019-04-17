@@ -1,1 +1,338 @@
 /* You can add global styles to this file, and also import other style files */
+.sign-in-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.sign-in-error {
+    display: block;
+    align-items: center;
+    width: 260px;
+    color: red;
+}
+  
+.sign-in-wrapper img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-bottom: 50px;
+}
+  
+.sign-in-wrapper input {
+    display: block;
+    /* width: 100%; */
+    padding: 16px;
+    border: none;
+    background: rgba(0, 0, 0, 0.003);
+    box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    border-left: 2px solid transparent;
+}
+  
+.sign-in-wrapper input::-webkit-input-placeholder {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.5);
+}
+  
+.sign-in-wrapper button {
+    display: block;
+    background-color: rgba(175, 47, 47, 0.15);
+    width: 100%;
+    padding: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 64px;
+}
+
+.modal {
+	display:block;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    margin: auto;
+    width: 95%;
+    height: 95%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 700px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.text {
+    bottom: 100px;
+    margin-left: 40px;
+    margin-right: 40px;
+    text-align: center;
+    line-height: 15px;
+    color:black;
+}
+
+.past-upload {
+	display: flex;
+	justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.past-upload img {
+    margin: 20px;
+    cursor: pointer;
+}
+
+.error {
+    color: rgb(255, 0, 0)
+}
+
+.delete {
+	position: relative;
+	top: -35px;
+	margin-left: -40px;
+	color: #f32a2a;
+	font-size: 35px;
+	font-weight: bolder;
+	transition: 0.3s;
+  }
+  
+.delete:hover,
+.delete:focus {
+	color: rgb(151, 2, 2);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.loader {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    z-index: 1;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+.indent-1 {
+    
+    float: left;
+  }
+
+.indent-1 section {
+    display: block;
+    margin: 20px;
+    float: left;
+  }
+
+.bank {
+    border-style: dotted;
+    width: 250px;
+    height: 100vh;
+}
+
+.bank .icon {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.file-bank {
+    width: 250px;
+    height: 75vh;
+    background-color: #ffe1f3cb;
+    overflow: auto;
+}
+
+.file-bank img {
+    margin-left: 5px;
+    margin-right: 7.5px;
+}
+
+.file-bank .dot {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.file-bank img span {
+    display: inline-block;
+}
+
+.file-bank div{
+    margin-bottom: 7.5px;
+    cursor: pointer;
+}
+
+.scan {
+    top: 100px;
+    text-align: center;
+    width: auto;
+}
+
+
+
+.preview {
+    text-align: center;
+    background-color: rgba(163, 163, 163, 0.699);
+    height: 500px;
+    width: 650px;
+    margin-top: 50px;
+    overflow: auto;
+}
+
+.preview img {
+    width: 650px;
+    height: 500px;
+}
+
+.text {
+    max-width: 500px;
+}
+
+.user-nav {
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+.image-view {
+    display: table;
+}
+
+.image-view .button-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100px;
+}
+
+.decrypt-button {
+    display: block;
+    background-color: #f14e4e;
+    padding:0.3em 0.6em;
+    margin:auto;
+    border:0.16em solid rgba(255,255,255,0);
+    border-radius:2em;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    font-size: 30px;
+    color:#FFFFFF;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align:center;
+    transition: all 0.2s;
+
+}
+
+.decrypt-button:hover{
+    border-color: rgba(255,255,255,1);
+}
+
+.upload {
+
+    text-align: center;
+}
+
+.function-buttons {
+    text-align: center;
+    display: inline;
+}
+.edit{
+    position: relative;
+    top: 40px;
+    margin-left: 60px;
+    color: #0b7c01;
+    font-size: 35px;
+    font-weight: bolder;
+    transition: 0.3s;
+    float: left;
+}
+.delete{
+    margin-right: 210px;
+    float: right;
+    top:40px;
+}
+
+.delete-alert {
+	position: fixed;
+	display:block;
+  	z-index: 1; /* Sit on top */
+  	top: 300px; /* Location of the box */
+	padding-top: 20px;
+	left: 530px;
+  	width: 500px;
+  	height: 200px;
+	background-color: rgb(255, 251, 251); /* Fallback color */
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+
+}
+.delete-alert p {
+	margin-left: 15px;
+	font-size: 30px;
+	color: rgb(207, 29, 29);
+
+}
+.delete-alert button{
+	cursor: pointer;
+	padding: 0 10px 0 10px;
+	border: 0;
+	margin: 15px;
+	background: none;
+	font-size: 150%;
+	vertical-align: baseline;
+	font-family: inherit;
+	font-weight: bold;
+	color: inherit;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: rgba(175, 47, 47, 0.15);
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
+.delete-alert .buttons {
+	display: flex;
+	margin-top: 35px;
+	justify-content: space-evenly;
+	
+}
+
+.edit-input{
+    display: block;
+    font-size: 25px;
+    width: 650px;
+    margin-top: 50px;
+}

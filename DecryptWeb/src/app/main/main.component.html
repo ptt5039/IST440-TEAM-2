@@ -1,21 +1,66 @@
-<section>
-{{userData.username}} <br>
-<p class="error" *ngIf="errorType">This file is not an image file, please re-upload</p>
-<p class="error" *ngIf="errorFile">There is no file to upload, please choose a file</p>
-<input type=file id="image" accept="image/*" (change)="handleFileInput($event.target.files)">
-<button (click) = "uploadImage()">Upload</button>
-<button (click) = "logout()">Log out</button>
+<div *ngIf="loading" class="loader" ></div>
 
-<div>
-    <h3>Current Upload:</h3>
-    <img *ngIf = "currentUpload" [src]="currentUpload.file_upload" width="150px" height="150px">
+<div *ngIf="deleteAlert" class="delete-alert" >
+        <p>Do you want to delete this image?</p>
+        <div class="buttons">
+        <button (click)= deleteYes(chosenImage)>Yes</button>
+        <button (click)="deleteNo()">No</button>
+        </div>
 </div>
 
-<h3>Past Upload:</h3>
-<div class="past-upload"  >
-    <div *ngFor = "let pastUpload of pastUploads?.reverse()">
-        <img [src]="pastUpload.file_upload" width="100px" height="100px" (click)="viewImage(pastUpload)">
-        <span (click)="deleteImage(pastUpload)" class="delete">&times;</span>
-    </div>
-</div>
+<section class="indent-1">
+
+    <section class="bank">
+        <img class='icon' src="http://ist440-ist440.7e14.starter-us-west-2.openshiftapps.com/media/LoginPageIcon.png">
+        <div class="user-nav">
+            Welcome, {{userData.username}}!
+            <button (click) = "logout()">Log out</button>
+        </div>
+        <div class="file-bank">
+            <div *ngFor = "let pastUpload of pastUploads" (click)=viewImage(pastUpload) >
+                <span class="dot">&#183;</span>
+                <img [src]="pastUpload.file_upload" width="20px" height="20px">
+                <span>Image {{pastUpload.name}}</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="scan">
+        <div class="upload">
+            <p class="error" *ngIf="errorType">This file is not an image file, please re-upload</p>
+            <p class="error" *ngIf="errorFile">There is no file to upload, please choose a file</p>
+            <input type=file id="image" accept="image/*" (change)="handleFileInput($event.target.files)">
+            <button (click) = "uploadImage()">Upload</button>
+        </div>
+
+        <input class="edit-input" *ngIf ="edit" [(ngModel)]="chosenEditText.message" 
+            (keyup.enter)="updateText(chosenEditText)">
+
+        <div class="function-buttons">
+            <button (click)="editText(currentMessage)" class="edit" *ngIf="imageView == false && currentMessage.message != null">
+                    Edit Text
+            </button>
+            <button (click)="editText(chosenImage)" class="edit" *ngIf="imageView && chosenImage.message != null">
+                        Edit Text
+            </button>
+            <button class="delete" *ngIf="chosenImage.file_upload != null" (click)="alertDelete()">Delete</button>
+        </div>
+        <div class="image-view">
+            <div *ngIf = "imageView == false">
+                <div class="preview">
+                    <img *ngIf = "currentUpload" [src]="currentUpload.file_upload">   
+                </div>
+                <p class="text" *ngIf = "currentMessage.message != null">Plain Text: {{currentMessage.message}}</p>
+            </div> 
+            <div *ngIf = "imageView">
+                    <div class="preview">
+                        <img *ngIf = "chosenImage.file_upload != null" [src]="chosenImage.file_upload">
+                    </div>
+                    <p class="text" *ngIf = "chosenImage.message != null">Plain Text: {{chosenImage.message}}</p>
+                </div> 
+            <div class="button-wrapper">
+                <button class="decrypt-button">Decrypt</button>
+            </div>        
+        </div>
+    </section>
 </section>

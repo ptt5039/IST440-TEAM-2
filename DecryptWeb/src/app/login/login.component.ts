@@ -14,6 +14,8 @@ import { UserService } from '../user.service';
 export class LoginComponent implements OnInit {
   
   error = false;
+  beforeLogin = true;
+  logging = false;
   token;
   expiredValue = new Date();
   ui;
@@ -44,10 +46,13 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    this.beforeLogin = false;
+    this.logging = true;
+    this.error = false;
     this.httpRequest.loginUser(this.input).subscribe(
       response => {
+        console.log(this.input);
         this.token = 'Token ' + response.token;
-        this.error = false;
         this.httpRequest.httpHeaders = new HttpHeaders({'Authorization': this.token});
         this.cookie.set('9Edasfjalk2145sddcgYYasjfdjaKLjas52as1d',
           this.appService.encryptData(this.token), this.expiredValue, '/');
@@ -60,11 +65,15 @@ export class LoginComponent implements OnInit {
           },
           error => {
             console.log(error);
+            this.beforeLogin = true;
+            this.logging = false;
           }
         );
       },
       error => {
         this.error = true;
+        this.beforeLogin = true;
+        this.logging = false;
         console.log(error);
       }     
     )

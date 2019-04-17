@@ -1,11 +1,12 @@
 <div class="sign-in-wrapper">
   <form>
-      <h1>Login</h1>
+      <img src="http://ist440-ist440.7e14.starter-us-west-2.openshiftapps.com/media/LoginPageIcon.png">
       <div class="sign-in-error" *ngIf = "error">Please enter the correct username and password. Note that both fields may be case-sensitive.</div>
       <input [(ngModel)]="input.username" name="username"
-          type="text" placeholder="Username">
+          type="text" placeholder="Login ID">
       <input [(ngModel)]="input.password" name="password"
           type="password" placeholder="Password" >
-      <button (click)="onLogin()">Login</button>
+      <button *ngIf="beforeLogin" (click)="onLogin()">Login</button>
+      <button *ngIf= "logging">Logging in ...</button>
   </form>
 </div>

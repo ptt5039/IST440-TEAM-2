@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.db.models.signals import post_save
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
@@ -27,6 +28,10 @@ class UploadFile(models.Model):
     file_upload = models.ImageField(upload_to=scramble_uploaded_filename, blank=False, null=False)
     file_date = models.DateTimeField(auto_now_add=True)
     file_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+@receiver(post_delete, sender=UploadFile)
+def submission_delete(sender, instance, **kwargs):
+    instance.file_upload.delete(False) 
 
 # message has been interpreted by tesseract
 class FileMessages(models.Model):
