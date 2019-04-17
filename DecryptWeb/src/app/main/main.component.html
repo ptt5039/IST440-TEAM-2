@@ -35,9 +35,11 @@
 
         <input class="edit-input" *ngIf ="edit" [(ngModel)]="chosenEditText.message" 
             (keyup.enter)="updateText(chosenEditText)">
+        <input class="edit-input" *ngIf ="editCurrent" [(ngModel)]="chosenEditText.message" 
+            (keyup.enter)="updateMessage(chosenEditText)">
 
         <div class="function-buttons">
-            <button (click)="editText(currentMessage)" class="edit" *ngIf="imageView == false && currentMessage.message != null">
+            <button (click)="editMessage(currentMessage)" class="edit" *ngIf="imageView == false && currentMessage.message != null">
                     Edit Text
             </button>
             <button (click)="editText(chosenImage)" class="edit" *ngIf="imageView && chosenImage.message != null">
@@ -58,8 +60,11 @@
                     </div>
                     <p class="text" *ngIf = "chosenImage.message != null">Plain Text: {{chosenImage.message}}</p>
                 </div> 
-            <div class="button-wrapper">
-                <button class="decrypt-button">Decrypt</button>
+            <div class="button-wrapper" *ngIf="imageView == false">
+                <button (click)= decrypt(currentMessage) class="decrypt-button">Decrypt</button>
+            </div>   
+            <div class="button-wrapper" *ngIf="imageView">
+                    <button (click)= decrypt(chosenImage) class="decrypt-button">Decrypt</button>
             </div>        
         </div>
     </section>

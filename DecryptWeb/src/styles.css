@@ -275,7 +275,7 @@
     top: 40px;
     margin-left: 30px;
     color: #0b7c01;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bolder;
     transition: 0.3s;
     float: left;
@@ -284,6 +284,7 @@
     margin-right: 120px;
     float: right;
     top:40px;
+    font-size: 25px;
 }
 
 .delete-alert {

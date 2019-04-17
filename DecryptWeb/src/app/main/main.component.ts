@@ -40,6 +40,7 @@ export class MainComponent implements OnInit {
   incrementName = 1;
   deleteAlert = false;
   edit = false;
+  editCurrent = false;
 
   constructor(
     private userService: UserService,
@@ -247,6 +248,11 @@ export class MainComponent implements OnInit {
     this.edit = true;
   }
 
+  editMessage(image) {
+    this.chosenEditText = image;
+    this.editCurrent = true;
+  }
+
   updateText(data) {
     this.loading=true;
     this.httpRequest.getMessageByImage(data.id).subscribe(
@@ -262,6 +268,22 @@ export class MainComponent implements OnInit {
           )
       }
     )
+  }
+
+  updateMessage(data) {
+    this.loading=true;
+    this.httpRequest.updateMessage(data.id, data.message).subscribe(
+      data => {
+        this.editCurrent = false;
+        this.getAllImages();
+        this.loading=false;
+        alert('The text of the image has been changed');
+        }
+      )
+  }
+  
+  decrypt(image){
+    alert('this function is currently unavailable, please try again later!')
   }
 
   logout() {

@@ -11,14 +11,12 @@ import { MainComponent } from './main/main.component';
 import { CookieService } from 'ngx-cookie-service';
 import { AppService } from './app.service';
 import { UserService } from './user.service';
-import { InterpretComponent } from './interpret/interpret.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent,
-    InterpretComponent
+    MainComponent
   ],
   imports: [
     BrowserModule,

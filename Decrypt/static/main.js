@@ -38,8 +38,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main/main.component */ "./src/app/main/main.component.ts");
-/* harmony import */ var _interpret_interpret_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./interpret/interpret.component */ "./src/app/interpret/interpret.component.ts");
-
 
 
 
@@ -53,10 +51,6 @@ var routes = [
     {
         path: 'main',
         component: _main_main_component__WEBPACK_IMPORTED_MODULE_4__["MainComponent"],
-    },
-    {
-        path: 'inter',
-        component: _interpret_interpret_component__WEBPACK_IMPORTED_MODULE_5__["InterpretComponent"],
     },
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -152,8 +146,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 /* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
 /* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user.service */ "./src/app/user.service.ts");
-/* harmony import */ var _interpret_interpret_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./interpret/interpret.component */ "./src/app/interpret/interpret.component.ts");
-
 
 
 
@@ -175,8 +167,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"],
-                _main_main_component__WEBPACK_IMPORTED_MODULE_9__["MainComponent"],
-                _interpret_interpret_component__WEBPACK_IMPORTED_MODULE_13__["InterpretComponent"]
+                _main_main_component__WEBPACK_IMPORTED_MODULE_9__["MainComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -364,107 +355,6 @@ var HttpRequestService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/interpret/interpret.component.css":
-/*!***************************************************!*\
-  !*** ./src/app/interpret/interpret.component.css ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ludGVycHJldC9pbnRlcnByZXQuY29tcG9uZW50LmNzcyJ9 */"
-
-/***/ }),
-
-/***/ "./src/app/interpret/interpret.component.html":
-/*!****************************************************!*\
-  !*** ./src/app/interpret/interpret.component.html ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n\n</p>\n"
-
-/***/ }),
-
-/***/ "./src/app/interpret/interpret.component.ts":
-/*!**************************************************!*\
-  !*** ./src/app/interpret/interpret.component.ts ***!
-  \**************************************************/
-/*! exports provided: InterpretComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InterpretComponent", function() { return InterpretComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var tesseract_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tesseract.js */ "./node_modules/tesseract.js/src/index.js");
-/* harmony import */ var tesseract_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(tesseract_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
-/* harmony import */ var _http_request_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../http-request.service */ "./src/app/http-request.service.ts");
-/* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../app.service */ "./src/app/app.service.ts");
-/* harmony import */ var _main_main_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../main/main.component */ "./src/app/main/main.component.ts");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-
-
-
-
-
-var InterpretComponent = /** @class */ (function () {
-    function InterpretComponent(http, cookie, httpRequest, appService, main) {
-        this.http = http;
-        this.cookie = cookie;
-        this.httpRequest = httpRequest;
-        this.appService = appService;
-        this.main = main;
-        if (this.cookie.get('ii') != null) {
-            this.chosenImageId = this.appService.decryptData(this.cookie.get('ii'));
-            this.getImageById(this.chosenImageId);
-        }
-        else {
-            this.chosenImage = this.main.chosenImage;
-            console.log(this.main.chosenImage);
-            this.interpretImage(this.chosenImage);
-        }
-    }
-    InterpretComponent.prototype.ngOnInit = function () {
-    };
-    InterpretComponent.prototype.getImageById = function (id) {
-        var _this = this;
-        this.httpRequest.getImageById(id).subscribe(function (data) {
-            _this.chosenImage = data;
-            _this.interpretImage(data);
-            console.log(data);
-        });
-    };
-    InterpretComponent.prototype.interpretImage = function (data) {
-        tesseract_js__WEBPACK_IMPORTED_MODULE_2__["detect"](this.fd)
-            .then(function (result) {
-            console.log(result);
-        });
-    };
-    InterpretComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-interpret',
-            template: __webpack_require__(/*! ./interpret.component.html */ "./src/app/interpret/interpret.component.html"),
-            styles: [__webpack_require__(/*! ./interpret.component.css */ "./src/app/interpret/interpret.component.css")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClient"],
-            ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"],
-            _http_request_service__WEBPACK_IMPORTED_MODULE_4__["HttpRequestService"],
-            _app_service__WEBPACK_IMPORTED_MODULE_5__["AppService"],
-            _main_main_component__WEBPACK_IMPORTED_MODULE_6__["MainComponent"]])
-    ], InterpretComponent);
-    return InterpretComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/login/login.component.css":
 /*!*******************************************!*\
   !*** ./src/app/login/login.component.css ***!
@@ -602,7 +492,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"loading\" class=\"loader\" ></div>\n\n<div *ngIf=\"deleteAlert\" class=\"delete-alert\" >\n        <p>Do you want to delete this image?</p>\n        <div class=\"buttons\">\n        <button (click)= deleteYes(chosenImage)>Yes</button>\n        <button (click)=\"deleteNo()\">No</button>\n        </div>\n</div>\n\n<section class=\"indent-1\">\n\n    <section class=\"bank\">\n        <img class='icon' src=\"http://ist440-ist440.7e14.starter-us-west-2.openshiftapps.com/media/LoginPageIcon.png\">\n        <div class=\"user-nav\">\n            Welcome, {{userData.username}}!\n            <button (click) = \"logout()\">Log out</button>\n        </div>\n        <div class=\"file-bank\">\n            <div *ngFor = \"let pastUpload of pastUploads\" (click)=viewImage(pastUpload) >\n                <span class=\"dot\">&#183;</span>\n                <img [src]=\"pastUpload.file_upload\" width=\"20px\" height=\"20px\">\n                <span>Image {{pastUpload.name}}</span>\n            </div>\n        </div>\n    </section>\n\n    <section class=\"scan\">\n        <div class=\"upload\">\n            <p class=\"error\" *ngIf=\"errorType\">This file is not an image file, please re-upload</p>\n            <p class=\"error\" *ngIf=\"errorFile\">There is no file to upload, please choose a file</p>\n            <input type=file id=\"image\" accept=\"image/*\" (change)=\"handleFileInput($event.target.files)\">\n            <button (click) = \"uploadImage()\">Upload</button>\n        </div>\n\n        <input class=\"edit-input\" *ngIf =\"edit\" [(ngModel)]=\"chosenEditText.message\" \n            (keyup.enter)=\"updateText(chosenEditText)\">\n\n        <div class=\"function-buttons\">\n            <button (click)=\"editText(currentMessage)\" class=\"edit\" *ngIf=\"imageView == false && currentMessage.message != null\">\n                    Edit Text\n            </button>\n            <button (click)=\"editText(chosenImage)\" class=\"edit\" *ngIf=\"imageView && chosenImage.message != null\">\n                        Edit Text\n            </button>\n            <button class=\"delete\" *ngIf=\"chosenImage.file_upload != null\" (click)=\"alertDelete()\">Delete</button>\n        </div>\n        <div class=\"image-view\">\n            <div *ngIf = \"imageView == false\">\n                <div class=\"preview\">\n                    <img *ngIf = \"currentUpload\" [src]=\"currentUpload.file_upload\">   \n                </div>\n                <p class=\"text\" *ngIf = \"currentMessage.message != null\">Plain Text: {{currentMessage.message}}</p>\n            </div> \n            <div *ngIf = \"imageView\">\n                    <div class=\"preview\">\n                        <img *ngIf = \"chosenImage.file_upload != null\" [src]=\"chosenImage.file_upload\">\n                    </div>\n                    <p class=\"text\" *ngIf = \"chosenImage.message != null\">Plain Text: {{chosenImage.message}}</p>\n                </div> \n            <div class=\"button-wrapper\">\n                <button class=\"decrypt-button\">Decrypt</button>\n            </div>        \n        </div>\n    </section>\n</section>"
+module.exports = "<div *ngIf=\"loading\" class=\"loader\" ></div>\n\n<div *ngIf=\"deleteAlert\" class=\"delete-alert\" >\n        <p>Do you want to delete this image?</p>\n        <div class=\"buttons\">\n        <button (click)= deleteYes(chosenImage)>Yes</button>\n        <button (click)=\"deleteNo()\">No</button>\n        </div>\n</div>\n\n<section class=\"indent-1\">\n\n    <section class=\"bank\">\n        <img class='icon' src=\"http://ist440-ist440.7e14.starter-us-west-2.openshiftapps.com/media/LoginPageIcon.png\">\n        <div class=\"user-nav\">\n            Welcome, {{userData.username}}!\n            <button (click) = \"logout()\">Log out</button>\n        </div>\n        <div class=\"file-bank\">\n            <div *ngFor = \"let pastUpload of pastUploads\" (click)=viewImage(pastUpload) >\n                <span class=\"dot\">&#183;</span>\n                <img [src]=\"pastUpload.file_upload\" width=\"20px\" height=\"20px\">\n                <span>Image {{pastUpload.name}}</span>\n            </div>\n        </div>\n    </section>\n\n    <section class=\"scan\">\n        <div class=\"upload\">\n            <p class=\"error\" *ngIf=\"errorType\">This file is not an image file, please re-upload</p>\n            <p class=\"error\" *ngIf=\"errorFile\">There is no file to upload, please choose a file</p>\n            <input type=file id=\"image\" accept=\"image/*\" (change)=\"handleFileInput($event.target.files)\">\n            <button (click) = \"uploadImage()\">Upload</button>\n        </div>\n\n        <input class=\"edit-input\" *ngIf =\"edit\" [(ngModel)]=\"chosenEditText.message\" \n            (keyup.enter)=\"updateText(chosenEditText)\">\n        <input class=\"edit-input\" *ngIf =\"editCurrent\" [(ngModel)]=\"chosenEditText.message\" \n            (keyup.enter)=\"updateMessage(chosenEditText)\">\n\n        <div class=\"function-buttons\">\n            <button (click)=\"editMessage(currentMessage)\" class=\"edit\" *ngIf=\"imageView == false && currentMessage.message != null\">\n                    Edit Text\n            </button>\n            <button (click)=\"editText(chosenImage)\" class=\"edit\" *ngIf=\"imageView && chosenImage.message != null\">\n                        Edit Text\n            </button>\n            <button class=\"delete\" *ngIf=\"chosenImage.file_upload != null\" (click)=\"alertDelete()\">Delete</button>\n        </div>\n        <div class=\"image-view\">\n            <div *ngIf = \"imageView == false\">\n                <div class=\"preview\">\n                    <img *ngIf = \"currentUpload\" [src]=\"currentUpload.file_upload\">   \n                </div>\n                <p class=\"text\" *ngIf = \"currentMessage.message != null\">Plain Text: {{currentMessage.message}}</p>\n            </div> \n            <div *ngIf = \"imageView\">\n                    <div class=\"preview\">\n                        <img *ngIf = \"chosenImage.file_upload != null\" [src]=\"chosenImage.file_upload\">\n                    </div>\n                    <p class=\"text\" *ngIf = \"chosenImage.message != null\">Plain Text: {{chosenImage.message}}</p>\n                </div> \n            <div class=\"button-wrapper\" *ngIf=\"imageView == false\">\n                <button (click)= decrypt(currentMessage) class=\"decrypt-button\">Decrypt</button>\n            </div>   \n            <div class=\"button-wrapper\" *ngIf=\"imageView\">\n                    <button (click)= decrypt(chosenImage) class=\"decrypt-button\">Decrypt</button>\n            </div>        \n        </div>\n    </section>\n</section>"
 
 /***/ }),
 
@@ -662,6 +552,7 @@ var MainComponent = /** @class */ (function () {
         this.incrementName = 1;
         this.deleteAlert = false;
         this.edit = false;
+        this.editCurrent = false;
         this.ui = this.userService.isLoggedCheck();
         if (this.ui != null)
             this.getCurrentUser();
@@ -819,6 +710,10 @@ var MainComponent = /** @class */ (function () {
         this.chosenEditText = image;
         this.edit = true;
     };
+    MainComponent.prototype.editMessage = function (image) {
+        this.chosenEditText = image;
+        this.editCurrent = true;
+    };
     MainComponent.prototype.updateText = function (data) {
         var _this = this;
         this.loading = true;
@@ -830,6 +725,19 @@ var MainComponent = /** @class */ (function () {
                 alert('The text of the image has been changed');
             });
         });
+    };
+    MainComponent.prototype.updateMessage = function (data) {
+        var _this = this;
+        this.loading = true;
+        this.httpRequest.updateMessage(data.id, data.message).subscribe(function (data) {
+            _this.editCurrent = false;
+            _this.getAllImages();
+            _this.loading = false;
+            alert('The text of the image has been changed');
+        });
+    };
+    MainComponent.prototype.decrypt = function (image) {
+        alert('this function is currently unavailable, please try again later!');
     };
     MainComponent.prototype.logout = function () {
         this.cookie.deleteAll();
