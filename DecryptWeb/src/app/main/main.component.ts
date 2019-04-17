@@ -180,6 +180,7 @@ export class MainComponent implements OnInit {
                                     this.httpRequest.createMessage(data.id, this.currentMessage).subscribe(
                                       response => {
                                         this.loading = false;
+                                        alert('Successful translated the image into text!')
                                         this.currentMessage = response;
                                       },
                                       error => {
@@ -284,6 +285,7 @@ export class MainComponent implements OnInit {
   
   decrypt(image){
     alert('this function is currently unavailable, please try again later!')
+    
   }
 
   logout() {
@@ -298,6 +300,7 @@ export class MainComponent implements OnInit {
         if (p.status == "recognizing text" && p.progress == 1) 
         {
           this.loading = false;
+          alert('Successful translated the image into text!')
         }  
         else
         {

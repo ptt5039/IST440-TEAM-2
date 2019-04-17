@@ -337,3 +337,52 @@
     width: 500px;
     margin-top: 50px;
 }
+
+@media all and (max-width: 480px){
+    .delete-alert {
+        display: none;
+    }
+
+    .indent-1 .bank {
+        display: none;
+    }
+
+    .edit-input {
+        display: none;
+    }
+
+    .function-buttons {
+        display: none;
+    }
+
+    .image-view .upload {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .image-view .preview {
+        height:250px;
+        width:250px;
+        margin-left: auto;
+        margin-right:auto;
+
+    }
+
+    .image-view .preview img {
+        height:250px;
+        width:250px;
+        margin-left: auto;
+        margin-right:auto;
+
+    }
+
+    .image-view .text {
+        display: none;
+
+    }
+
+    .image-view .decrypt-button {
+        display: none;
+    }
+
+}

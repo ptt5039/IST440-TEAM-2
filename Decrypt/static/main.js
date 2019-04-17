@@ -658,6 +658,7 @@ var MainComponent = /** @class */ (function () {
                                             });
                                             _this.httpRequest.createMessage(data.id, _this.currentMessage).subscribe(function (response) {
                                                 _this.loading = false;
+                                                alert('Successful translated the image into text!');
                                                 _this.currentMessage = response;
                                             }, function (error) {
                                                 console.log(error);
@@ -750,6 +751,7 @@ var MainComponent = /** @class */ (function () {
             console.log('progress', p);
             if (p.status == "recognizing text" && p.progress == 1) {
                 _this.loading = false;
+                alert('Successful translated the image into text!');
             }
             else {
                 _this.loading = true;
